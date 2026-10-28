@@ -5,26 +5,26 @@ export const metadata = {
   title: "CV — Hannan Sayed",
 };
 
-const section = "cv-sheet mt-6 rounded-2xl border border-borderline bg-midnight p-6";
+const section = "cv-sheet mt-6 rounded-[20px] border border-white/10 bg-white/[0.04] p-6";
 const tag =
-  "rounded-full border border-borderline bg-obsidian px-3 py-1.5 text-sm font-semibold text-slate-200";
+  "rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-sm font-semibold text-slate-200";
 
 export default function CV() {
   return (
     <div>
       <div className="no-print flex flex-wrap items-center justify-between gap-3">
-        <a href="/" className="font-bold text-cyan transition-colors duration-200 hover:underline">
+        <a href="/" className="font-bold text-[#a5f3fc] transition-colors duration-200 hover:underline">
           ← Back to portfolio
         </a>
         <PrintButton />
       </div>
 
-      <article className="cv-sheet rounded-2xl border border-borderline bg-midnight p-6 sm:p-8">
+      <article className="cv-sheet rounded-[20px] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
         <header>
           <h1 className="text-[clamp(2rem,5vw,3rem)] font-extrabold leading-tight text-slate-50">
             Hannan Sayed
           </h1>
-          <p className="mt-1 text-base font-bold text-cyan">Ethical Hacker | Cybersecurity Aspirant</p>
+          <p className="mt-1 text-base font-bold text-[#a5f3fc]">Ethical Hacker | Cybersecurity Aspirant</p>
           <p className="mt-1 text-slate-300">Mumbai, Maharashtra, India</p>
           <p className="mt-3 text-slate-300">
             B.Sc. Computer Science student focused on offensive cybersecurity and web

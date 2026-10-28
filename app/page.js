@@ -1,13 +1,13 @@
 import Reveal from "./components/Reveal";
 
 const panel =
-  "rounded-2xl border border-borderline bg-midnight p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan/50 hover:shadow-[0_12px_32px_rgba(0,229,255,0.12)]";
+  "rounded-[20px] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:shadow-[0_12px_48px_rgba(125,211,252,0.12)]";
 const tag =
-  "rounded-full border border-borderline bg-obsidian px-3 py-1.5 text-sm font-semibold text-slate-200 transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan/60 hover:text-cyan";
+  "rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-sm font-semibold text-slate-200 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#7dd3fc]/40 hover:text-[#a5f3fc]";
 const sectionTitle =
   "text-xl font-bold text-slate-100 sm:text-2xl";
 const eyebrow =
-  "text-xs font-bold uppercase tracking-[0.14em] text-cyan";
+  "text-xs font-bold uppercase tracking-[0.14em] text-[#a5f3fc]";
 
 function TagList({ items, label }) {
   return (
@@ -23,15 +23,15 @@ function TagList({ items, label }) {
 
 export default function Home() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Hero / About */}
       <section
         id="about"
         aria-labelledby="hero-heading"
-        className="scroll-mt-28 rounded-2xl border border-borderline bg-midnight p-6 sm:p-8"
+        className="scroll-mt-28 rounded-[24px] border border-white/10 bg-white/[0.04] p-8 shadow-[0_8px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:p-10"
       >
         <div className="flex flex-wrap items-center gap-3">
-          <span className="rounded-full border border-tactical/40 bg-tactical/10 px-3 py-1 text-xs font-bold text-tactical">
+          <span className="rounded-full border border-[#a7f3d0]/30 bg-[#a7f3d0]/10 px-3 py-1 text-xs font-bold text-[#a7f3d0]">
             AVAILABLE FOR OPPORTUNITIES
           </span>
           <span className="flex items-center gap-2 text-sm text-slate-300">
@@ -42,7 +42,7 @@ export default function Home() {
         <p className={`${eyebrow} mt-6`}>Ethical Hacker | Cybersecurity Aspirant</p>
         <h1
           id="hero-heading"
-          className="mt-2 text-[clamp(2.4rem,6vw,3.8rem)] font-extrabold leading-tight text-slate-50"
+          className="mt-2 text-[clamp(2.4rem,6vw,3.8rem)] font-extrabold leading-tight text-slate-50 drop-shadow-[0_0_28px_rgba(125,211,252,0.25)]"
         >
           Hannan Sayed
         </h1>
@@ -54,39 +54,39 @@ export default function Home() {
         <div className="mt-6 flex flex-wrap gap-3">
           <a
             href="https://www.linkedin.com/in/hannan-sayed-18b751258"
-            className="flex min-h-[44px] items-center rounded-xl bg-cyan px-5 py-2.5 text-sm font-bold text-obsidian transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_8px_24px_rgba(0,229,255,0.35)]"
+            className="flex min-h-[44px] items-center rounded-[16px] bg-[#7dd3fc] px-5 py-2.5 text-sm font-bold text-[#050810] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_8px_24px_rgba(125, 211, 252, 0.35)]"
           >
             LinkedIn
           </a>
           <a
             href="https://github.com/haxor-uii"
-            className="flex min-h-[44px] items-center rounded-xl border border-borderline bg-obsidian px-5 py-2.5 text-sm font-bold text-slate-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan/60 hover:text-cyan"
+            className="flex min-h-[44px] items-center rounded-[16px] border border-white/10 bg-white/[0.05] px-5 py-2.5 text-sm font-bold text-slate-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#7dd3fc]/40 hover:text-[#a5f3fc]"
           >
             GitHub
           </a>
           <a
             href="mailto:sfmods130@gmail.com"
-            className="flex min-h-[44px] items-center rounded-xl border border-borderline bg-obsidian px-5 py-2.5 text-sm font-bold text-slate-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan/60 hover:text-cyan"
+            className="flex min-h-[44px] items-center rounded-[16px] border border-white/10 bg-white/[0.05] px-5 py-2.5 text-sm font-bold text-slate-100 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#7dd3fc]/40 hover:text-[#a5f3fc]"
           >
             Email me
           </a>
           <a
             href="/cv"
-            className="flex min-h-[44px] items-center rounded-xl border border-cyan/50 px-5 py-2.5 text-sm font-bold text-cyan transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyan hover:text-obsidian"
+            className="flex min-h-[44px] items-center rounded-[16px] border border-[#7dd3fc]/40 px-5 py-2.5 text-sm font-bold text-[#a5f3fc] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#7dd3fc] hover:text-[#050810]"
           >
             Download CV
           </a>
         </div>
         <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <div className="rounded-xl border border-borderline bg-obsidian px-4 py-3">
+          <div className="rounded-[16px] border border-white/10 bg-white/[0.05] px-4 py-3">
             <p className="text-xs font-bold uppercase tracking-wide text-slate-400">Focus</p>
             <p className="mt-1 text-sm font-semibold text-slate-100">Web Application Penetration Testing</p>
           </div>
-          <div className="rounded-xl border border-borderline bg-obsidian px-4 py-3">
+          <div className="rounded-[16px] border border-white/10 bg-white/[0.05] px-4 py-3">
             <p className="text-xs font-bold uppercase tracking-wide text-slate-400">Study</p>
             <p className="mt-1 text-sm font-semibold text-slate-100">B.Sc. Computer Science</p>
           </div>
-          <div className="rounded-xl border border-borderline bg-obsidian px-4 py-3">
+          <div className="rounded-[16px] border border-white/10 bg-white/[0.05] px-4 py-3">
             <p className="text-xs font-bold uppercase tracking-wide text-slate-400">Location</p>
             <p className="mt-1 text-sm font-semibold text-slate-100">Mumbai, Maharashtra, India</p>
           </div>
@@ -185,7 +185,7 @@ export default function Home() {
               <p className="mt-1 text-slate-300">Noted as exceptional performance.</p>
               <p className="mt-1 text-sm text-slate-400">Cert ID: SFO4VIP284</p>
             </div>
-            <span className="rounded-full border border-tactical/40 bg-tactical/10 px-3 py-1 text-xs font-bold text-tactical">
+            <span className="rounded-full border border-[#a7f3d0]/30 bg-[#a7f3d0]/10 px-3 py-1 text-xs font-bold text-[#a7f3d0]">
               Apr 2026
             </span>
           </div>
@@ -203,7 +203,7 @@ export default function Home() {
           <div className={panel}>
             <div className="flex items-start justify-between gap-3">
               <h3 className="text-lg font-bold text-slate-100">DH - Penetration Tester</h3>
-              <span className="shrink-0 rounded-full border border-tactical/40 bg-tactical/10 px-2.5 py-1 text-xs font-bold text-tactical">
+              <span className="shrink-0 rounded-full border border-[#a7f3d0]/30 bg-[#a7f3d0]/10 px-2.5 py-1 text-xs font-bold text-[#a7f3d0]">
                 Completed
               </span>
             </div>
@@ -212,7 +212,7 @@ export default function Home() {
           <div className={panel}>
             <div className="flex items-start justify-between gap-3">
               <h3 className="text-lg font-bold text-slate-100">DH WAPT</h3>
-              <span className="shrink-0 rounded-full border border-tactical/40 bg-tactical/10 px-2.5 py-1 text-xs font-bold text-tactical">
+              <span className="shrink-0 rounded-full border border-[#a7f3d0]/30 bg-[#a7f3d0]/10 px-2.5 py-1 text-xs font-bold text-[#a7f3d0]">
                 Completed
               </span>
             </div>
@@ -223,19 +223,19 @@ export default function Home() {
               <h3 className="text-lg font-bold text-slate-100">
                 CompTIA PenTest+ (PT0-002) Specialization
               </h3>
-              <span className="shrink-0 rounded-full border border-tactical/40 bg-tactical/10 px-2.5 py-1 text-xs font-bold text-tactical">
+              <span className="shrink-0 rounded-full border border-[#a7f3d0]/30 bg-[#a7f3d0]/10 px-2.5 py-1 text-xs font-bold text-[#a7f3d0]">
                 Completed
               </span>
             </div>
             <p className="mt-2 text-slate-300">Coursera / Packt — completed 5 June 2026</p>
-            <p className="mt-2 rounded-lg border border-borderline bg-obsidian px-3 py-2 text-sm text-slate-300">
+            <p className="mt-2 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 text-sm text-slate-300">
               Specialization completion — not CompTIA certification itself.
             </p>
           </div>
           <div className={panel}>
             <div className="flex items-start justify-between gap-3">
               <h3 className="text-lg font-bold text-slate-100">PortSwigger Web Security Academy</h3>
-              <span className="shrink-0 rounded-full border border-cyan/40 bg-cyan/10 px-2.5 py-1 text-xs font-bold text-cyan">
+              <span className="shrink-0 rounded-full border border-[#7dd3fc]/30 bg-[#7dd3fc]/10 px-2.5 py-1 text-xs font-bold text-[#a5f3fc]">
                 In progress
               </span>
             </div>
@@ -256,13 +256,13 @@ export default function Home() {
             here yet.
           </p>
           <TagList label="Writeup categories" items={["Web vulnerabilities", "Lab notes"]} />
-          <p className="mt-4 rounded-lg border border-borderline bg-obsidian px-3 py-2 text-sm text-slate-300">
+          <p className="mt-4 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 text-sm text-slate-300">
             Coming soon — writeups will be added here as they are written.
           </p>
           <p className="mt-4">
             <a
               href="/writeups"
-              className="font-bold text-cyan transition-colors duration-200 hover:underline"
+              className="font-bold text-[#a5f3fc] transition-colors duration-200 hover:underline"
             >
               View the writeups index →
             </a>
@@ -283,7 +283,7 @@ export default function Home() {
               LinkedIn:{" "}
               <a
                 href="https://www.linkedin.com/in/hannan-sayed-18b751258"
-                className="font-semibold text-cyan transition-colors duration-200 hover:underline"
+                className="font-semibold text-[#a5f3fc] transition-colors duration-200 hover:underline"
               >
                 linkedin.com/in/hannan-sayed-18b751258
               </a>
@@ -292,7 +292,7 @@ export default function Home() {
               GitHub:{" "}
               <a
                 href="https://github.com/haxor-uii"
-                className="font-semibold text-cyan transition-colors duration-200 hover:underline"
+                className="font-semibold text-[#a5f3fc] transition-colors duration-200 hover:underline"
               >
                 github.com/haxor-uii
               </a>
@@ -301,7 +301,7 @@ export default function Home() {
               Email:{" "}
               <a
                 href="mailto:sfmods130@gmail.com"
-                className="font-semibold text-cyan transition-colors duration-200 hover:underline"
+                className="font-semibold text-[#a5f3fc] transition-colors duration-200 hover:underline"
               >
                 sfmods130@gmail.com
               </a>

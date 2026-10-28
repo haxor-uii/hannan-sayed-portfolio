@@ -7,17 +7,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        obsidian: "#060814",
-        midnight: "#0D1324",
-        cyan: {
-          DEFAULT: "#00E5FF",
-        },
-        tactical: "#10B981",
-        borderline: "#1E293B",
+        space: "#050810",
+        night: "#0a0f24",
+        glow: "#7dd3fc",
+        mist: "#a5f3fc",
+        violetsoft: "#c4b5fd",
+        firefly: "#fde68a",
+        mint: "#a7f3d0",
       },
       borderRadius: {
-        panel: "16px",
-        card: "12px",
+        panel: "24px",
+        card: "16px",
       },
     },
   },
