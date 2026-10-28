@@ -1,3 +1,5 @@
+import Reveal from "./components/Reveal";
+
 export default function Home() {
   return (
     <>
@@ -22,15 +24,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="education" aria-labelledby="education-heading">
+      <Reveal tag="section" id="education" aria-labelledby="education-heading">
         <h2 id="education-heading">Education</h2>
-        <div className="card">
+        <Reveal tag="div" className="card">
           <h3>St. Wilfred&apos;s College of ACS, University of Mumbai (NEP 2020)</h3>
           <p>B.Sc. Computer Science, second year, academic year 2026–27.</p>
-        </div>
-      </section>
+        </Reveal>
+      </Reveal>
 
-      <section id="skills" aria-labelledby="skills-heading">
+      <Reveal tag="section" id="skills" aria-labelledby="skills-heading">
         <h2 id="skills-heading">Skills &amp; Knowledge</h2>
         <ul className="tags" aria-label="Core skills">
           <li>Penetration Testing</li>
@@ -64,42 +66,44 @@ export default function Home() {
           <li>Juice Shop</li>
           <li>WebGoat</li>
         </ul>
-      </section>
+      </Reveal>
 
-      <section id="experience" aria-labelledby="experience-heading">
+      <Reveal tag="section" id="experience" aria-labelledby="experience-heading">
         <h2 id="experience-heading">Experience</h2>
-        <div className="card">
+        <Reveal tag="div" className="card">
           <h3>ShadowFox — One-month Virtual Internship in Cyber Security</h3>
           <p className="meta">01/04/2026 to 30/04/2026</p>
           <p>Noted as exceptional performance.</p>
           <p className="meta">Cert ID: SFO4VIP284</p>
-        </div>
-      </section>
+        </Reveal>
+      </Reveal>
 
-      <section id="certifications" aria-labelledby="certifications-heading">
+      <Reveal tag="section" id="certifications" aria-labelledby="certifications-heading">
         <h2 id="certifications-heading">Certifications &amp; Training</h2>
-        <div className="card">
+        <div className="card-grid">
+        <Reveal tag="div" className="card">
           <h3>DH - Penetration Tester</h3>
           <p>Darknet Hacking (Mira Road branch) — 09/12/2025</p>
-        </div>
-        <div className="card">
+        </Reveal>
+        <Reveal tag="div" className="card">
           <h3>DH WAPT</h3>
           <p>Darknet Hacking — 24/04/2026</p>
-        </div>
-        <div className="card">
+        </Reveal>
+        <Reveal tag="div" className="card">
           <h3>CompTIA PenTest+ (PT0-002) Specialization</h3>
           <p>Coursera / Packt — completed 5 June 2026</p>
           <p className="note">
             Specialization completion — not CompTIA certification itself.
           </p>
-        </div>
-        <div className="card">
+        </Reveal>
+        <Reveal tag="div" className="card">
           <h3>PortSwigger Web Security Academy</h3>
           <p>In progress — ongoing lab practice.</p>
+        </Reveal>
         </div>
-      </section>
+      </Reveal>
 
-      <section id="writeups" aria-labelledby="writeups-heading">
+      <Reveal tag="section" id="writeups" aria-labelledby="writeups-heading">
         <h2 id="writeups-heading">Writeups</h2>
         <p>
           A growing index for future writeups, organised by topic. Nothing is published
@@ -113,9 +117,9 @@ export default function Home() {
         <p>
           <a href="/writeups">View the writeups index →</a>
         </p>
-      </section>
+      </Reveal>
 
-      <section id="contact" aria-labelledby="contact-heading">
+      <Reveal tag="section" id="contact" aria-labelledby="contact-heading">
         <h2 id="contact-heading">Contact</h2>
         <p>For professional enquiries, reach me through:</p>
         <ul>
@@ -132,7 +136,7 @@ export default function Home() {
             Email: <a href="mailto:sfmods130@gmail.com">sfmods130@gmail.com</a>
           </li>
         </ul>
-      </section>
+      </Reveal>
     </>
   );
 }
