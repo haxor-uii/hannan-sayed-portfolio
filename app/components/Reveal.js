@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
+// Fast fade-in only (200ms via .reveal in globals.css). No staggered delays.
 export default function Reveal({ children, className = "", tag = "div", ...rest }) {
   const ref = useRef(null);
 
