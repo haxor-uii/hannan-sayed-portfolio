@@ -7,6 +7,11 @@ import ScrollProgress from "./components/ScrollProgress";
 export const metadata = {
   description: "Portfolio of hannan. Ethical Hacker | Cybersecurity Aspirant, B.Sc. Computer Science student focused on offensive cybersecurity and web application penetration testing.",
   title: "hannan. | Ethical Hacker | Cybersecurity Aspirant",
+  openGraph: {
+    description: "Portfolio of hannan. Ethical Hacker | Cybersecurity Aspirant, B.Sc. Computer Science student focused on offensive cybersecurity and web application penetration testing.",
+    title: "hannan. | Ethical Hacker | Cybersecurity Aspirant",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {

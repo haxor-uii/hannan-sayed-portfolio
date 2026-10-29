@@ -20,7 +20,9 @@ export default function About() {
         <p className="mt-8 max-w-3xl text-base leading-relaxed text-[#8A8A8A]">
           I like the practical side of security more than the theory. If something can be tested by hand, I would rather test it than read about it.
         </p>
-        <Illustration label="Abstract illustration, photo to be added later" />
+        <div className="mt-12">
+          <Illustration label="Abstract illustration, photo to be added later" />
+        </div>
       </Reveal>
     </div>
   );
