@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-// Fast fade-in only (200ms via .reveal in globals.css). No staggered delays.
-export default function Reveal({ children, className = "", tag = "div", ...rest }) {
+// Cinematic reveal: 900ms rise in globals.css, with an optional stagger delay.
+export default function Reveal({ children, className = "", tag = "div", delay = 0, ...rest }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Reveal({ children, className = "", tag = "div", ...rest 
 
   const Tag = tag;
   return (
-    <Tag ref={ref} className={`reveal ${className}`.trim()} {...rest}>
+    <Tag ref={ref} className={`reveal ${className}`.trim()} style={{ transitionDelay: delay ? `${delay}ms` : undefined }} {...rest}>
       {children}
     </Tag>
   );

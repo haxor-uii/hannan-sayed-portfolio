@@ -64,35 +64,43 @@ export default function SiteChrome({ children }) {
         </div>
       </header>
 
-      {menuOpen && (
-        <div className="menu-overlay print:hidden fixed inset-0 z-[90] flex flex-col bg-[#410306]" role="dialog" aria-modal="true" aria-label="Menu">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-            <span className="text-base lowercase text-[#F5F2ED]">hannan.</span>
-            <button
-              type="button"
-              onClick={() => setMenuOpen(false)}
-              className="flex min-h-[44px] items-center text-xs font-bold uppercase tracking-[0.28em] text-[#F5F2ED]"
-            >
-              Close
-            </button>
-          </div>
-          <nav aria-label="Menu" className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center gap-1 px-4 sm:px-6">
-            {nav.map(([label, href]) => (
-              <a
-                key={label}
-                href={href}
-                onClick={() => setMenuOpen(false)}
-                className="flex min-h-[56px] items-center text-left text-4xl text-[#F5F2ED] transition-colors duration-200 hover:text-white sm:text-5xl"
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-          <p className="mx-auto w-full max-w-6xl px-4 pb-10 text-xs uppercase tracking-[0.28em] text-[#F5F2ED]/70 sm:px-6">
-            Portfolio
-          </p>
+      <div
+        className={`menu-overlay print:hidden fixed inset-0 z-[90] flex flex-col bg-[#410306] ${menuOpen ? "open" : ""}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+        aria-hidden={!menuOpen}
+      >
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+          <span className="text-base lowercase text-[#F5F2ED]">hannan.</span>
+          <button
+            type="button"
+            onClick={() => setMenuOpen(false)}
+            tabIndex={menuOpen ? 0 : -1}
+            className="flex min-h-[44px] items-center text-xs font-bold uppercase tracking-[0.28em] text-[#F5F2ED]"
+          >
+            Close
+          </button>
         </div>
-      )}
+        <div aria-hidden="true" className="menu-sweep mx-auto w-full max-w-6xl px-4 sm:px-6" />
+        <nav aria-label="Menu" className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center gap-1 px-4 sm:px-6">
+          {nav.map(([label, href], i) => (
+            <a
+              key={label}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              tabIndex={menuOpen ? 0 : -1}
+              style={{ "--i": i }}
+              className="menu-link flex min-h-[56px] items-center text-left text-4xl text-[#F5F2ED] hover:text-white sm:text-5xl"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+        <p className="menu-link mx-auto w-full max-w-6xl px-4 pb-10 text-xs uppercase tracking-[0.28em] text-[#F5F2ED]/70 sm:px-6" style={{ "--i": nav.length }}>
+          Portfolio
+        </p>
+      </div>
 
       <main id="main" className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:px-10">
         {children}

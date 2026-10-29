@@ -58,43 +58,54 @@ button:focus-visible {
   position: absolute;
   border-radius: 9999px;
   background: #fde68a;
-  box-shadow: 0 0 5px 1px rgba(253, 230, 138, 0.45), 0 0 14px 4px rgba(253, 230, 138, 0.14);
-  opacity: 0.5;
+  box-shadow: 0 0 6px 2px rgba(253, 230, 138, 0.55), 0 0 18px 6px rgba(253, 230, 138, 0.2);
+  opacity: 0.65;
   animation: firefly-wander-a 14s ease-in-out infinite;
 }
 .wander-b { animation-name: firefly-wander-b; }
 .wander-c { animation-name: firefly-wander-c; }
 .wander-d { animation-name: firefly-wander-d; }
 @keyframes firefly-wander-a {
-  0%, 100% { transform: translate(0, 0); opacity: 0.25; }
-  25% { transform: translate(28px, -22px); opacity: 0.65; }
-  50% { transform: translate(-18px, -48px); opacity: 0.75; }
-  75% { transform: translate(14px, -16px); opacity: 0.45; }
+  0%, 100% { transform: translate(0, 0); opacity: 0.35; }
+  25% { transform: translate(56px, -44px); opacity: 0.85; }
+  50% { transform: translate(-36px, -96px); opacity: 0.95; }
+  75% { transform: translate(28px, -32px); opacity: 0.6; }
 }
 @keyframes firefly-wander-b {
-  0%, 100% { transform: translate(0, 0); opacity: 0.3; }
-  30% { transform: translate(-32px, -12px); opacity: 0.7; }
-  55% { transform: translate(-8px, -40px); opacity: 0.5; }
-  80% { transform: translate(24px, -28px); opacity: 0.65; }
+  0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+  30% { transform: translate(-64px, -24px); opacity: 0.9; }
+  55% { transform: translate(-16px, -80px); opacity: 0.7; }
+  80% { transform: translate(48px, -56px); opacity: 0.85; }
 }
 @keyframes firefly-wander-c {
-  0%, 100% { transform: translate(0, 0); opacity: 0.22; }
-  20% { transform: translate(12px, 26px); opacity: 0.6; }
-  50% { transform: translate(38px, -10px); opacity: 0.75; }
-  75% { transform: translate(-14px, -34px); opacity: 0.4; }
+  0%, 100% { transform: translate(0, 0); opacity: 0.32; }
+  20% { transform: translate(24px, 52px); opacity: 0.8; }
+  50% { transform: translate(76px, -20px); opacity: 0.95; }
+  75% { transform: translate(-28px, -68px); opacity: 0.55; }
 }
 @keyframes firefly-wander-d {
-  0%, 100% { transform: translate(0, 0); opacity: 0.32; }
-  25% { transform: translate(-26px, 18px); opacity: 0.65; }
-  50% { transform: translate(-42px, -20px); opacity: 0.75; }
-  75% { transform: translate(10px, -44px); opacity: 0.45; }
+  0%, 100% { transform: translate(0, 0); opacity: 0.42; }
+  25% { transform: translate(-52px, 36px); opacity: 0.85; }
+  50% { transform: translate(-84px, -40px); opacity: 0.95; }
+  75% { transform: translate(20px, -88px); opacity: 0.6; }
 }
 
-/* Section reveal, capped at 600ms, no slow intro */
+/* Cinematic entrance timeline: staged fade and rise, 900ms, no instant pop */
+.entrance {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: entrance-in 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes entrance-in {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section reveal, cinematic 900ms rise */
 .reveal {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 600ms ease, transform 600ms ease;
+  transform: translateY(28px);
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal.is-visible {
   opacity: 1;
@@ -109,7 +120,7 @@ button:focus-visible {
   display: inline-block;
   opacity: 0;
   transform: translateY(110%) rotate(2deg);
-  transition: opacity 600ms ease, transform 600ms ease;
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity;
 }
 .word-reveal.is-visible .word {
@@ -138,6 +149,42 @@ button:focus-visible {
   background: #E11D2E;
   box-shadow: 0 0 12px rgba(225, 29, 46, 0.6);
   min-width: 0;
+  transition: width 150ms linear;
+}
+
+/* Menu overlay: slow reveal, not an instant panel. Links stagger in. */
+.menu-overlay {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-24px);
+  transition: opacity 650ms cubic-bezier(0.22, 1, 0.36, 1), transform 650ms cubic-bezier(0.22, 1, 0.36, 1), visibility 650ms;
+}
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.menu-overlay .menu-sweep {
+  height: 2px;
+  width: 0;
+  background: #E11D2E;
+  box-shadow: 0 0 16px rgba(225, 29, 46, 0.8);
+  transition: width 900ms cubic-bezier(0.22, 1, 0.36, 1) 150ms;
+}
+.menu-overlay.open .menu-sweep {
+  width: 100%;
+}
+.menu-link {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 750ms cubic-bezier(0.22, 1, 0.36, 1), transform 750ms cubic-bezier(0.22, 1, 0.36, 1), color 200ms ease;
+}
+.menu-overlay.open .menu-link {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(120ms + var(--i) * 90ms);
 }
 
 /* Silver rotating button border: a shine that loops around the outline */
@@ -220,36 +267,41 @@ button:focus-visible {
   display: block;
 }
 .has-crosshair,
+.has-crosshair *,
 .has-crosshair a,
 .has-crosshair button,
 .has-crosshair [data-cursor] {
-  cursor: none;
+  cursor: none !important;
 }
 .crosshair-dot {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   border-radius: 9999px;
   background: #E11D2E;
-  box-shadow: 0 0 10px rgba(225, 29, 46, 0.9);
+  box-shadow: 0 0 12px rgba(225, 29, 46, 1);
 }
 .crosshair-lines span {
   position: absolute;
   background: #F5F2ED;
-  opacity: 0.9;
+  opacity: 0.95;
   transition: transform 200ms ease;
 }
-.crosshair-lines .line-n { width: 2px; height: 10px; left: -1px; top: -22px; }
-.crosshair-lines .line-s { width: 2px; height: 10px; left: -1px; top: 12px; }
-.crosshair-lines .line-w { width: 10px; height: 2px; top: -1px; left: -22px; }
-.crosshair-lines .line-e { width: 10px; height: 2px; top: -1px; left: 12px; }
-.crosshair-lines.stretched .line-n { transform: translateY(-12px) scaleY(1.8); }
-.crosshair-lines.stretched .line-s { transform: translateY(12px) scaleY(1.8); }
-.crosshair-lines.stretched .line-w { transform: translateX(-12px) scaleX(1.8); }
-.crosshair-lines.stretched .line-e { transform: translateX(12px) scaleX(1.8); }
-.crosshair-lines.moving .line-n { transform: translateY(4px) scaleY(0.6); }
-.crosshair-lines.moving .line-s { transform: translateY(-4px) scaleY(0.6); }
-.crosshair-lines.moving .line-w { transform: translateX(4px) scaleX(0.6); }
-.crosshair-lines.moving .line-e { transform: translateX(-4px) scaleX(0.6); }
+.crosshair-lines .line-n { width: 2px; height: 14px; left: -1px; top: -30px; }
+.crosshair-lines .line-s { width: 2px; height: 14px; left: -1px; top: 16px; }
+.crosshair-lines .line-w { width: 14px; height: 2px; top: -1px; left: -30px; }
+.crosshair-lines .line-e { width: 14px; height: 2px; top: -1px; left: 16px; }
+.crosshair-lines.stretched .line-n { transform: translateY(-14px) scaleY(2.1); }
+.crosshair-lines.stretched .line-s { transform: translateY(14px) scaleY(2.1); }
+.crosshair-lines.stretched .line-w { transform: translateX(-14px) scaleX(2.1); }
+.crosshair-lines.stretched .line-e { transform: translateX(14px) scaleX(2.1); }
+.crosshair-lines.moving .line-n { transform: translateY(5px) scaleY(0.6); }
+.crosshair-lines.moving .line-s { transform: translateY(-5px) scaleY(0.6); }
+.crosshair-lines.moving .line-w { transform: translateX(5px) scaleX(0.6); }
+.crosshair-lines.moving .line-e { transform: translateX(-5px) scaleX(0.6); }
+.crosshair-lines.is-click .line-n { transform: translateY(8px) scaleY(0.4); }
+.crosshair-lines.is-click .line-s { transform: translateY(-8px) scaleY(0.4); }
+.crosshair-lines.is-click .line-w { transform: translateX(8px) scaleX(0.4); }
+.crosshair-lines.is-click .line-e { transform: translateX(-8px) scaleX(0.4); }
 
 /* Abstract illustration placeholder, clearly not a photo */
 .illustration {
@@ -261,42 +313,38 @@ button:focus-visible {
   position: absolute;
   border: 1px solid #410306;
   border-radius: 9999px;
+  animation: illustration-drift 14s ease-in-out infinite alternate;
 }
 .illustration .line {
   position: absolute;
   height: 1px;
   background: linear-gradient(to right, transparent, #E11D2E, transparent);
+  animation: illustration-sweep 6s ease-in-out infinite;
+  transform-origin: left center;
+}
+@keyframes illustration-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(24px, -18px) scale(1.06); }
+}
+@keyframes illustration-sweep {
+  0%, 100% { transform: scaleX(0.6); opacity: 0.4; }
+  50% { transform: scaleX(1); opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Owner requested motion on all devices, so this no longer kills the
+     whole site. It only calms ambient motion: no smooth scrolling and no
+     silver rotor spin. Reveals, sweep, cursor, menu and fireflies still run,
+     and content is never left invisible if an animation is interrupted. */
   html {
     scroll-behavior: auto;
   }
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
+  .silver-rotor::before {
+    animation: none;
   }
-  .reveal,
-  .word-reveal .word {
-    opacity: 1;
-    transform: none;
-  }
-  .firefly,
   .star {
-    animation: none !important;
+    animation: none;
     opacity: 0.35;
-  }
-  .crosshair-dot,
-  .crosshair-lines,
-  .scroll-progress-track {
-    display: none !important;
-  }
-  .has-crosshair,
-  .has-crosshair a,
-  .has-crosshair button {
-    cursor: auto;
   }
 }
 
