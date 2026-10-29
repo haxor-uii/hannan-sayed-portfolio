@@ -8,19 +8,31 @@ import { useEffect, useRef, useState } from "react";
 //   "mostly past the top", so a paragraph that is already in view on a tall
 //   desktop screen still shows a red word in the middle, instead of jumping
 //   straight to all white.
-// - loop: the red word travels on its own timer, so the sweep is visible on
-//   the home page even before the visitor scrolls.
-export default function RedSweep({ text, className = "", loop = false }) {
+// - once: the red word travels through the sentence exactly one time, slowly,
+//   then stops with all words white. It never loops. Used on the home page.
+export default function RedSweep({ text, className = "", once = false }) {
   const ref = useRef(null);
   const [active, setActive] = useState(0);
   const words = text.split(" ");
 
   useEffect(() => {
-    if (loop) {
-      const timer = setInterval(() => {
-        setActive((prev) => (prev + 1) % (words.length + 1));
-      }, 240);
-      return () => clearInterval(timer);
+    if (once) {
+      let timer = null;
+      const start = setTimeout(() => {
+        timer = setInterval(() => {
+          setActive((prev) => {
+            if (prev >= words.length) {
+              if (timer) clearInterval(timer);
+              return prev;
+            }
+            return prev + 1;
+          });
+        }, 420);
+      }, 1900);
+      return () => {
+        clearTimeout(start);
+        if (timer) clearInterval(timer);
+      };
     }
     let raf = 0;
     const update = () => {
@@ -50,7 +62,7 @@ export default function RedSweep({ text, className = "", loop = false }) {
       if (raf) cancelAnimationFrame(raf);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loop, text]);
+  }, [once, text]);
 
   return (
     <p ref={ref} className={`scroll-fill ${className}`.trim()}>

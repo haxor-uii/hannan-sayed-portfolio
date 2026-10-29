@@ -51,7 +51,7 @@ export default function Home() {
           </div>
           <div className="entrance mt-12" style={{ animationDelay: "1050ms" }}>
             <RedSweep
-              loop
+              once
               className="max-w-2xl text-xl leading-relaxed sm:text-2xl"
               text="Breaking web apps on purpose, learning how they fail, and getting cleaner every time."
             />

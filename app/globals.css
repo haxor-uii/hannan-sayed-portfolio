@@ -233,6 +233,11 @@ button:focus-visible {
 .has-crosshair .crosshair-lines {
   display: block;
 }
+.crosshair-fading .crosshair-dot,
+.crosshair-fading .crosshair-lines {
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
 .has-crosshair,
 .has-crosshair *,
 .has-crosshair a,
@@ -287,13 +292,13 @@ button:focus-visible {
 }
 .menu-dropdown .menu-link {
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 350ms ease, transform 350ms ease, background-color 200ms ease, color 200ms ease;
+  transform: translateX(-12px);
+  transition: opacity 400ms ease, transform 400ms ease, background-color 200ms ease, color 200ms ease;
 }
 .menu-dropdown.open .menu-link {
   opacity: 1;
-  transform: translateY(0);
-  transition-delay: calc(40ms + var(--i) * 60ms);
+  transform: translateX(0);
+  transition-delay: calc(50ms + var(--i) * 50ms);
 }
 
 /* Home marquee: topics scrolling, paused on hover */

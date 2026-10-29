@@ -2,23 +2,30 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import GlowDivider from "./GlowDivider";
 
+// Menu, redesigned so it is not a copy of the reference screenshot.
+// The reference was a plain single-line icon-plus-label list. This one is
+// different on purpose: a header with the name and a close button, numbered
+// serif rows with a short description under each label, an arrow that only
+// appears on hover, and a small contact row at the bottom. It is still a
+// small dropdown, still dark, still no red panel, but it is not that list.
 const nav = [
-  ["About", "/about"],
-  ["Education", "/education"],
-  ["Skills", "/skills"],
-  ["Experience", "/experience"],
-  ["Certifications", "/certifications"],
-  ["Writeups", "/writeups"],
-  ["Contact", "/contact"],
-  ["Download CV", "/cv"],
+  ["About", "/about", "Who I am"],
+  ["Education", "/education", "College and degree"],
+  ["Skills", "/skills", "What I can test"],
+  ["Experience", "/experience", "ShadowFox internship"],
+  ["Certifications", "/certifications", "Training and certs"],
+  ["Writeups", "/writeups", "Coming soon"],
+  ["Contact", "/contact", "Reach me"],
+  ["Download CV", "/cv", "Printable CV"],
 ];
 
-function NavIcon({ label }) {
+function FooterIcon({ kind }) {
   const common = {
-    width: 16,
-    height: 16,
-    viewBox: "0 0 16 16",
+    width: 18,
+    height: 18,
+    viewBox: "0 0 18 18",
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 1.5,
@@ -26,73 +33,43 @@ function NavIcon({ label }) {
     strokeLinejoin: "round",
     "aria-hidden": true,
   };
-  switch (label) {
-    case "About":
-      return (
-        <svg {...common}>
-          <circle cx="8" cy="5" r="2.5" />
-          <path d="M3.5 13.5c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4" />
-        </svg>
-      );
-    case "Education":
-      return (
-        <svg {...common}>
-          <path d="M2.5 3.5h9v9h-9z" />
-          <path d="M5.5 3.5v9" />
-          <path d="M11.5 5.5h2v7h-2" />
-        </svg>
-      );
-    case "Skills":
-      return (
-        <svg {...common}>
-          <circle cx="8" cy="8" r="2.5" />
-          <path d="M8 2v2M8 12v2M2 8h2M12 8h2" />
-        </svg>
-      );
-    case "Experience":
-      return (
-        <svg {...common}>
-          <rect x="2" y="5" width="12" height="8" rx="1" />
-          <path d="M5.5 5a2.5 2.5 0 0 1 5 0" />
-          <path d="M2 9h12" />
-        </svg>
-      );
-    case "Certifications":
-      return (
-        <svg {...common}>
-          <circle cx="8" cy="7" r="4" />
-          <path d="M5.5 10.5 4 14l4-1.5L12 14l-1.5-3.5" />
-        </svg>
-      );
-    case "Writeups":
-      return (
-        <svg {...common}>
-          <path d="M4 2h5l3 3v9H4z" />
-          <path d="M6 8h5M6 11h5" />
-        </svg>
-      );
-    case "Contact":
-      return (
-        <svg {...common}>
-          <rect x="2" y="4" width="12" height="9" rx="1" />
-          <path d="M2.5 5.5 8 10l5.5-4.5" />
-        </svg>
-      );
-    case "Download CV":
-      return (
-        <svg {...common}>
-          <path d="M8 2v8M4.5 7 8 10.5 11.5 7" />
-          <path d="M3 14h10" />
-        </svg>
-      );
-    default:
-      return (
-        <svg {...common}>
-          <circle cx="8" cy="8" r="3" />
-        </svg>
-      );
+  if (kind === "linkedin") {
+    return (
+      <svg {...common}>
+        <text x="9" y="13.5" textAnchor="middle" fontSize="11" fontWeight="700" fill="currentColor" stroke="none" fontFamily="Arial, sans-serif">
+          in
+        </text>
+      </svg>
+    );
   }
+  if (kind === "github") {
+    return (
+      <svg {...common}>
+        <path d="M6 4 3 9l3 5M12 4l3 5-3 5M10.5 4 7.5 14" />
+      </svg>
+    );
+  }
+  if (kind === "email") {
+    return (
+      <svg {...common}>
+        <rect x="2" y="4" width="14" height="11" rx="1" />
+        <path d="M2.5 5.5 9 10.5l6.5-5" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...common}>
+      <path d="M5 3h3l1.5 3-2 1.5a11 11 0 0 0 4.5 4.5L13.5 10 16.5 11.5v3a1.5 1.5 0 0 1-1.5 1.5A14 14 0 0 1 3.5 4.5 1.5 1.5 0 0 1 5 3z" />
+    </svg>
+  );
 }
+
+const footerLinks = [
+  { label: "LinkedIn", value: "Connect on LinkedIn", href: "https://www.linkedin.com/in/hannan-sayed-18b751258", kind: "linkedin" },
+  { label: "GitHub", value: "haxor-uii", href: "https://github.com/haxor-uii", kind: "github" },
+  { label: "Email", value: "sfmods130@gmail.com", href: "mailto:sfmods130@gmail.com", kind: "email" },
+  { label: "Phone", value: "+91 7045028008", href: "tel:+917045028008", kind: "phone" },
+];
 
 export default function SiteChrome({ children }) {
   const pathname = usePathname();
@@ -159,11 +136,25 @@ export default function SiteChrome({ children }) {
 
           <div
             ref={panelRef}
-            className={`menu-dropdown absolute right-4 top-[calc(100%+8px)] z-[90] w-[260px] max-w-[calc(100vw-2rem)] rounded-2xl border border-[#262626] bg-[#111111] p-2 shadow-2xl print:hidden sm:right-6 ${menuOpen ? "open" : ""}`}
+            className={`menu-dropdown absolute right-4 top-[calc(100%+8px)] z-[90] w-[300px] max-w-[calc(100vw-2rem)] rounded-[20px] border border-[#2A2A2A] bg-[#141414] p-2 shadow-2xl print:hidden sm:right-6 ${menuOpen ? "open" : ""}`}
             aria-hidden={!menuOpen}
           >
-            <nav aria-label="Menu" className="flex flex-col">
-              {nav.map(([label, href], i) => {
+            <div className="flex items-center justify-between border-b border-[#262626] px-3 pb-3 pt-2">
+              <div>
+                <p className="font-serif text-lg leading-none text-[#F5F2ED]">hannan.</p>
+                <p className="mt-1 text-[11px] uppercase tracking-[0.28em] text-[#8A8A8A]">Menu</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                tabIndex={menuOpen ? 0 : -1}
+                className="flex min-h-[44px] min-w-[44px] items-center justify-center text-xs font-bold uppercase tracking-[0.2em] text-[#8A8A8A] hover:text-[#F5F2ED]"
+              >
+                Close
+              </button>
+            </div>
+            <nav aria-label="Menu" className="flex flex-col pt-2">
+              {nav.map(([label, href, desc], i) => {
                 const active = pathname === href;
                 return (
                   <a
@@ -173,17 +164,35 @@ export default function SiteChrome({ children }) {
                     tabIndex={menuOpen ? 0 : -1}
                     aria-current={active ? "page" : undefined}
                     style={{ "--i": i }}
-                    className={`menu-link flex min-h-[44px] items-center gap-3 rounded-xl px-3 text-left text-base text-[#F5F2ED] hover:bg-[#1E1E1E] ${active ? "bg-[#1E1E1E] font-semibold" : ""}`}
+                    className={`menu-link group flex min-h-[56px] items-center gap-4 rounded-xl px-3 hover:bg-[#1E1E1E] ${active ? "bg-[#1E1E1E]" : ""}`}
                   >
-                    <span aria-hidden="true" className="flex h-6 w-6 shrink-0 items-center justify-center text-[#8A8A8A]">
-                      <NavIcon label={label} />
+                    <span aria-hidden="true" className={`w-6 shrink-0 font-serif text-sm ${active ? "text-[#F5F2ED]" : "text-[#8A8A8A]"}`}>
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="flex-1">{label}</span>
-                    {active ? <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#F5F2ED]" /> : null}
+                    <span className="flex-1">
+                      <span className={`block font-serif text-base leading-tight ${active ? "font-semibold text-[#F5F2ED]" : "text-[#F5F2ED]"}`}>
+                        {label}
+                      </span>
+                      <span className="block text-xs text-[#8A8A8A]">{desc}</span>
+                    </span>
+                    <span aria-hidden="true" className="text-[#8A8A8A] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                      →
+                    </span>
                   </a>
                 );
               })}
             </nav>
+            <div className="mt-2 flex gap-4 border-t border-[#262626] px-3 pb-2 pt-3">
+              <a href="https://www.linkedin.com/in/hannan-sayed-18b751258" tabIndex={menuOpen ? 0 : -1} className="text-xs font-semibold text-[#8A8A8A] hover:text-[#F5F2ED]">
+                LinkedIn
+              </a>
+              <a href="https://github.com/haxor-uii" tabIndex={menuOpen ? 0 : -1} className="text-xs font-semibold text-[#8A8A8A] hover:text-[#F5F2ED]">
+                GitHub
+              </a>
+              <a href="mailto:sfmods130@gmail.com" tabIndex={menuOpen ? 0 : -1} className="text-xs font-semibold text-[#8A8A8A] hover:text-[#F5F2ED]">
+                Email
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -193,20 +202,36 @@ export default function SiteChrome({ children }) {
       </main>
       <footer className="relative z-10 pb-16 print:hidden">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
-          <p className="text-sm text-[#8A8A8A]">
-            hannan. ·{" "}
-            <a href="https://www.linkedin.com/in/hannan-sayed-18b751258" className="font-semibold text-[#F5F2ED] hover:underline">
-              LinkedIn
-            </a>{" "}
-            ·{" "}
-            <a href="https://github.com/haxor-uii" className="font-semibold text-[#F5F2ED] hover:underline">
-              GitHub
-            </a>{" "}
-            ·{" "}
-            <a href="mailto:sfmods130@gmail.com" className="font-semibold text-[#F5F2ED] hover:underline">
-              sfmods130@gmail.com
-            </a>
-          </p>
+          <GlowDivider />
+          <div className="mt-8 flex flex-wrap items-start justify-between gap-6">
+            <div>
+              <p className="font-serif text-3xl leading-none text-[#F5F2ED]">hannan.</p>
+              <p className="mt-3 text-sm text-[#8A8A8A]">Ethical Hacker | Cybersecurity Aspirant · Mumbai, India</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="rounded-xl border border-[#262626] px-4 py-3 text-xs font-bold uppercase tracking-[0.28em] text-[#F5F2ED] hover:border-[#8A8A8A]"
+            >
+              Back to top ↑
+            </button>
+          </div>
+          <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {footerLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="rounded-xl border border-[#262626] p-4 transition-colors duration-200 hover:border-[#8A8A8A]"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#262626] text-[#F5F2ED]">
+                  <FooterIcon kind={link.kind} />
+                </span>
+                <span className="mt-3 block text-[11px] font-bold uppercase tracking-[0.28em] text-[#8A8A8A]">{link.label}</span>
+                <span className="mt-1 block break-all text-sm font-semibold text-[#F5F2ED]">{link.value}</span>
+              </a>
+            ))}
+          </div>
+          <p className="mt-8 text-xs text-[#8A8A8A]">hannan. · Portfolio</p>
         </div>
       </footer>
     </div>
