@@ -7,17 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        space: "#050810",
-        night: "#0a0f24",
-        glow: "#7dd3fc",
-        mist: "#a5f3fc",
-        violetsoft: "#c4b5fd",
+        ink: "#0C0C0C",
+        burgundy: "#410306",
+        paper: "#F5F2ED",
+        dim: "#8A8A8A",
+        faint: "#525252",
+        sweep: "#E11D2E",
         firefly: "#fde68a",
-        mint: "#a7f3d0",
-      },
-      borderRadius: {
-        panel: "24px",
-        card: "16px",
       },
     },
   },

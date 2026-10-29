@@ -2,9 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-// Forge-style thin scroll-progress line fixed at the very bottom.
-// rAF-guarded scroll listener; hidden in print and (via CSS) under
-// prefers-reduced-motion.
 export default function ScrollProgress() {
   const [pct, setPct] = useState(0);
 
@@ -13,7 +10,7 @@ export default function ScrollProgress() {
     const update = () => {
       raf = 0;
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      setPct(max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0);
+      setPct(max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 100);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -28,5 +25,9 @@ export default function ScrollProgress() {
     };
   }, []);
 
-  return <div aria-hidden="true" className="scroll-progress print:hidden" style={{ width: `${pct}%` }} />;
+  return (
+    <div aria-hidden="true" className="scroll-progress-track print:hidden">
+      <div className="scroll-progress-fill" style={{ width: `${pct}%` }} />
+    </div>
+  );
 }

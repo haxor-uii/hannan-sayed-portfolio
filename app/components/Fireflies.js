@@ -1,5 +1,5 @@
 export default function Fireflies() {
-  // Deterministic positions only — no random values on render, so no hydration mismatch.
+  // Deterministic positions only , no random values on render, so no hydration mismatch.
   // 32 warm fireflies, sparse and scattered, plus 24 tiny stars.
   // Each firefly gets a wander variant (a/b/c/d) for a different flight path.
   const fireflies = [

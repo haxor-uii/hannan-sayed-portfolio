@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Forge-style text reveal: deterministic word split, each word rises
 // slightly tilted then settles, staggered on entry via IntersectionObserver.
-// No random values, no entrance/loading effect — only on scroll into view.
+// No random values, no entrance/loading effect , only on scroll into view.
 // If JS or IntersectionObserver is unavailable, words are visible by default
 // (the component starts visible when no observer can be set up).
 export default function WordReveal({ text, className = "", id, as = "h2" }) {
