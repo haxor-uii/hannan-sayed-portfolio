@@ -1,13 +1,14 @@
 import PrintButton from "../components/PrintButton";
+import GlowDivider from "../components/GlowDivider";
 
 export const metadata = {
   description: "CV for Hannan Sayed — Ethical Hacker | Cybersecurity Aspirant.",
   title: "CV — Hannan Sayed",
 };
 
-const section = "cv-sheet mt-6 rounded-[20px] border border-white/10 bg-white/[0.04] p-6";
+const section = "cv-sheet mt-6 rounded-[20px] bg-white/[0.04] p-6";
 const tag =
-  "rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-sm font-semibold text-slate-200";
+  "rounded-full bg-white/[0.05] px-3 py-1.5 text-sm font-semibold text-slate-200";
 
 export default function CV() {
   return (
@@ -19,7 +20,7 @@ export default function CV() {
         <PrintButton />
       </div>
 
-      <article className="cv-sheet rounded-[20px] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+      <article className="cv-sheet rounded-[20px] bg-white/[0.04] p-6 sm:p-8">
         <header>
           <h1 className="text-[clamp(2rem,5vw,3rem)] font-extrabold leading-tight text-slate-50">
             Hannan Sayed
@@ -37,6 +38,8 @@ export default function CV() {
           </p>
         </header>
 
+        <GlowDivider />
+
         <section className={section}>
           <h2 className="text-xl font-bold text-slate-100">Education</h2>
           <p className="mt-2 font-bold text-slate-100">
@@ -44,6 +47,8 @@ export default function CV() {
           </p>
           <p className="text-slate-300">B.Sc. Computer Science, second year, academic year 2026–27.</p>
         </section>
+
+        <GlowDivider />
 
         <section className={section}>
           <h2 className="text-xl font-bold text-slate-100">Skills</h2>
@@ -67,6 +72,8 @@ export default function CV() {
           </ul>
         </section>
 
+        <GlowDivider />
+
         <section className={section}>
           <h2 className="text-xl font-bold text-slate-100">Experience</h2>
           <p className="mt-2 font-bold text-slate-100">
@@ -75,6 +82,8 @@ export default function CV() {
           <p className="text-slate-300">01/04/2026 to 30/04/2026 (Apr 2026)</p>
           <p className="text-slate-300">Noted as exceptional performance. Cert ID: SFO4VIP284</p>
         </section>
+
+        <GlowDivider />
 
         <section className={section}>
           <h2 className="text-xl font-bold text-slate-100">Certifications &amp; Training</h2>
@@ -89,12 +98,16 @@ export default function CV() {
           </ul>
         </section>
 
+        <GlowDivider />
+
         <section className={section}>
           <h2 className="text-xl font-bold text-slate-100">Writeups</h2>
           <p className="mt-2 text-slate-300">
             Coming soon — nothing published here yet. Categories: Web vulnerabilities, Lab notes.
           </p>
         </section>
+
+        <GlowDivider />
 
         <section className={section}>
           <h2 className="text-xl font-bold text-slate-100">Contact</h2>

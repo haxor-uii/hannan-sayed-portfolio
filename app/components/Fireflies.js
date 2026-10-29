@@ -1,6 +1,7 @@
 export default function Fireflies() {
   // Deterministic positions only — no random values on render, so no hydration mismatch.
-  // 20 warm fireflies, sparse and scattered, plus 24 tiny stars.
+  // 32 warm fireflies, sparse and scattered, plus 24 tiny stars.
+  // Each firefly gets a wander variant (a/b/c/d) for a different flight path.
   const fireflies = [
     { top: "8%", left: "6%", size: 3, dur: "11s", delay: "0s" },
     { top: "14%", left: "88%", size: 2, dur: "9s", delay: "2s" },
@@ -22,7 +23,19 @@ export default function Fireflies() {
     { top: "10%", left: "34%", size: 2, dur: "8s", delay: "6.5s" },
     { top: "50%", left: "28%", size: 3, dur: "13s", delay: "0.8s" },
     { top: "90%", left: "72%", size: 2, dur: "10s", delay: "4s" },
-  ];
+      { top: "16%", left: "14%", size: 3, dur: "16s", delay: "1.2s" },
+    { top: "34%", left: "90%", size: 2, dur: "18s", delay: "3.2s" },
+    { top: "48%", left: "66%", size: 3, dur: "11s", delay: "5.8s" },
+    { top: "60%", left: "26%", size: 2, dur: "19s", delay: "0.4s" },
+    { top: "74%", left: "52%", size: 4, dur: "15s", delay: "2.8s" },
+    { top: "88%", left: "44%", size: 2, dur: "17s", delay: "6.4s" },
+    { top: "6%", left: "52%", size: 3, dur: "12s", delay: "4.6s" },
+    { top: "40%", left: "2%", size: 2, dur: "20s", delay: "1.8s" },
+    { top: "56%", left: "82%", size: 3, dur: "13s", delay: "7.4s" },
+    { top: "68%", left: "8%", size: 2, dur: "16s", delay: "3.9s" },
+    { top: "92%", left: "62%", size: 3, dur: "11s", delay: "5.1s" },
+    { top: "24%", left: "40%", size: 2, dur: "18s", delay: "0.9s" },
+];
   const stars = [
     { top: "6%", left: "20%", size: 2, dur: "7s", delay: "0s" },
     { top: "12%", left: "64%", size: 1, dur: "9s", delay: "2s" },
@@ -72,7 +85,7 @@ export default function Fireflies() {
       {fireflies.map((f, i) => (
         <span
           key={`fly-${i}`}
-          className="firefly"
+          className={`firefly wander-${"abcd"[i % 4]}`}
           style={{
             top: f.top,
             left: f.left,

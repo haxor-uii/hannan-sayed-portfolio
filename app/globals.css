@@ -62,8 +62,11 @@ button:focus-visible {
   50% { opacity: 0.65; transform: scale(1.2); }
 }
 
-/* Fireflies — warm gold, soft glow, slow drift + twinkle only.
-   This is the ONLY slow ambient animation on the page. */
+/* Fireflies — warm gold, soft glow, wandering flight + twinkle.
+   This is the ONLY slow ambient animation on the page.
+   Four gentle flight paths so fireflies wander here and there
+   instead of only pulsing in place. Durations (10–20s) and delays
+   come from the inline styles in Fireflies.js. */
 .firefly {
   position: absolute;
   border-radius: 9999px;
@@ -72,13 +75,34 @@ button:focus-visible {
     0 0 6px 2px rgba(253, 230, 138, 0.65),
     0 0 18px 6px rgba(253, 230, 138, 0.22);
   opacity: 0.7;
-  animation: firefly-float 10s ease-in-out infinite;
+  animation: firefly-wander-a 14s ease-in-out infinite;
 }
-@keyframes firefly-float {
+.wander-b { animation-name: firefly-wander-b; }
+.wander-c { animation-name: firefly-wander-c; }
+.wander-d { animation-name: firefly-wander-d; }
+@keyframes firefly-wander-a {
   0%, 100% { transform: translate(0, 0); opacity: 0.35; }
-  25% { transform: translate(8px, -14px); opacity: 0.9; }
-  50% { transform: translate(-6px, -24px); opacity: 1; }
-  75% { transform: translate(6px, -10px); opacity: 0.6; }
+  25% { transform: translate(28px, -22px); opacity: 0.9; }
+  50% { transform: translate(-18px, -48px); opacity: 1; }
+  75% { transform: translate(14px, -16px); opacity: 0.6; }
+}
+@keyframes firefly-wander-b {
+  0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+  30% { transform: translate(-32px, -12px); opacity: 1; }
+  55% { transform: translate(-8px, -40px); opacity: 0.7; }
+  80% { transform: translate(24px, -28px); opacity: 0.9; }
+}
+@keyframes firefly-wander-c {
+  0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+  20% { transform: translate(12px, 26px); opacity: 0.85; }
+  50% { transform: translate(38px, -10px); opacity: 1; }
+  75% { transform: translate(-14px, -34px); opacity: 0.55; }
+}
+@keyframes firefly-wander-d {
+  0%, 100% { transform: translate(0, 0); opacity: 0.45; }
+  25% { transform: translate(-26px, 18px); opacity: 0.9; }
+  50% { transform: translate(-42px, -20px); opacity: 1; }
+  75% { transform: translate(10px, -44px); opacity: 0.6; }
 }
 
 /* Fast reveal only: 200ms, no staggered hero entrance */
@@ -147,7 +171,10 @@ button:focus-visible {
   footer,
   .no-print,
   .fireflies,
-  .aurora {
+  .aurora,
+  .site-sidebar,
+  .mobile-topbar,
+  .glow-divider {
     display: none !important;
   }
   body {
@@ -161,7 +188,6 @@ button:focus-visible {
   .cv-sheet {
     background: #ffffff !important;
     color: #000000 !important;
-    border-color: #cccccc !important;
   }
   .cv-sheet a {
     color: #000000 !important;
