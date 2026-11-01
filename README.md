@@ -1,7 +1,6 @@
 # Hannan Sayed — Portfolio
 
-A clean, single-page React/Next.js portfolio for Hannan Sayed — Ethical Hacker |
-Cybersecurity Aspirant, built with the Next.js App Router. It is ready for
+A clean, single-page React/Next.js portfolio, built with the Next.js App Router. It is ready for
 Vercel Hobby hosting, with no custom server and no backend — contact is via
 LinkedIn, GitHub, and a mailto link only.
 
@@ -12,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:3000
+Open http://localhost:3000
 
 ## Production build
 
