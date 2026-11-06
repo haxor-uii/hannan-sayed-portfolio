@@ -197,43 +197,45 @@ export default function SiteChrome({ children }) {
         </div>
       </header>
 
-      <main key={pathname} id="main" className="page-fade relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 lg:px-10">
+      <main key={pathname} id="main" className={`page-fade relative z-10 mx-auto max-w-6xl px-4 pt-10 sm:px-6 lg:px-10 ${pathname === "/" ? "pb-24" : "pb-10"}`}>
         {children}
       </main>
-      <footer className="relative z-10 pb-16 print:hidden">
+      {pathname === "/" ? (
+      <footer className="relative z-10 pb-8 print:hidden">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
           <GlowDivider />
-          <div className="mt-8 flex flex-wrap items-start justify-between gap-6">
+          <div className="mt-5 flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="font-serif text-3xl leading-none text-[#F5F2ED]">hannan.</p>
-              <p className="mt-3 text-sm text-[#8A8A8A]">Ethical Hacker | Cybersecurity Aspirant · Mumbai, India</p>
+              <p className="font-serif text-2xl leading-none text-[#F5F2ED]">hannan.</p>
+              <p className="mt-2 text-sm text-[#8A8A8A]">Ethical Hacker | Cybersecurity Aspirant · Mumbai, India</p>
             </div>
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="rounded-xl border border-[#262626] px-4 py-3 text-xs font-bold uppercase tracking-[0.28em] text-[#F5F2ED] hover:border-[#8A8A8A]"
+              className="rounded-xl border border-[#262626] px-3 py-2 text-xs font-bold uppercase tracking-[0.28em] text-[#F5F2ED] hover:border-[#8A8A8A]"
             >
               Back to top ↑
             </button>
           </div>
-          <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
             {footerLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="rounded-xl border border-[#262626] p-4 transition-colors duration-200 hover:border-[#8A8A8A]"
+                className="rounded-xl border border-[#262626] p-3 transition-colors duration-200 hover:border-[#8A8A8A]"
               >
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#262626] text-[#F5F2ED]">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#262626] text-[#F5F2ED]">
                   <FooterIcon kind={link.kind} />
                 </span>
-                <span className="mt-3 block text-[11px] font-bold uppercase tracking-[0.28em] text-[#8A8A8A]">{link.label}</span>
+                <span className="mt-2 block text-[11px] font-bold uppercase tracking-[0.28em] text-[#8A8A8A]">{link.label}</span>
                 <span className="mt-1 block break-all text-sm font-semibold text-[#F5F2ED]">{link.value}</span>
               </a>
             ))}
           </div>
-          <p className="mt-8 text-xs text-[#8A8A8A]">hannan. · Portfolio</p>
+          <p className="mt-5 text-xs text-[#8A8A8A]">hannan. · Portfolio</p>
         </div>
       </footer>
+      ) : null}
     </div>
   );
 }

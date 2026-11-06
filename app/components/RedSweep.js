@@ -3,11 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 
 // Red sweep, two modes:
-// - scroll (default): the red word travels as the paragraph moves through the
-//   viewport. The range is mapped from "just entering at the bottom" to
-//   "mostly past the top", so a paragraph that is already in view on a tall
-//   desktop screen still shows a red word in the middle, instead of jumping
-//   straight to all white.
+// - scroll (default): the red word starts on the first word when the page is
+//   at the top, then travels word by word as you scroll down. It finishes,
+//   all words white, the moment the last word scrolls out of the top of the
+//   viewport. The old formula mapped progress to the paragraph's position
+//   inside the viewport, so a paragraph already in view on load started
+//   mid-sentence, around "the usual web bugs" on About, and could never
+//   start at word one. This version maps progress to page scroll instead,
+//   so it works the same on mobile and desktop.
 // - once: the red word travels through the sentence exactly one time, slowly,
 //   then stops with all words white. It never loops. Used on the home page.
 export default function RedSweep({ text, className = "", once = false }) {
@@ -40,14 +43,15 @@ export default function RedSweep({ text, className = "", once = false }) {
       const el = ref.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight || 1;
-      // 0 when the top of the paragraph touches the bottom of the viewport,
-      // 1 when the paragraph has moved well past the top. In the middle of
-      // the screen the value is in between, so the red word is visible.
-      const progress = Math.min(
-        1,
-        Math.max(0, (vh - rect.top) / (vh * 0.8 + rect.height))
-      );
+      const scrollY = window.scrollY || 0;
+      // Distance from the top of the page to the bottom of the paragraph.
+      // At the top of the page scrollY is 0, so progress is 0 and the red
+      // word is the first word. When scrollY reaches this distance, the
+      // paragraph's last word has just left the top of the viewport, so
+      // progress is 1 and every word is white. Scrolling back up reverses it.
+      const total = rect.top + scrollY + rect.height;
+      const progress =
+        total > 0 ? Math.min(1, Math.max(0, scrollY / total)) : 1;
       setActive(Math.floor(progress * words.length));
     };
     const onScroll = () => {
