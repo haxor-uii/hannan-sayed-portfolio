@@ -13,6 +13,11 @@ import { useEffect, useRef, useState } from "react";
 //   stalls at "am". Mapping to the scroll you actually have means it
 //   starts at word one and ends all white on every screen. On mobile the
 //   page is much taller, so the same sweep travels slowly word by word.
+//   If a page has no scroll at all (the smaller text made desktop About
+//   fit the whole viewport), there is nothing to scroll, so the sweep
+//   plays once on its own, one word at a time, and ends all white.
+//   It never loops, and if the window is resized so the page can scroll
+//   again, it goes back to following the scroll.
 // - once: the red word travels through the sentence exactly one time, slowly,
 //   then stops with all words white. It never loops. Used on the home page.
 export default function RedSweep({ text, className = "", once = false }) {
@@ -40,6 +45,29 @@ export default function RedSweep({ text, className = "", once = false }) {
       };
     }
     let raf = 0;
+    let autoTimer = null;
+    let autoStart = null;
+    const stopAuto = () => {
+      if (autoTimer) clearInterval(autoTimer);
+      if (autoStart) clearTimeout(autoStart);
+      autoTimer = null;
+      autoStart = null;
+    };
+    const startAuto = () => {
+      if (autoTimer || autoStart) return;
+      autoStart = setTimeout(() => {
+        autoStart = null;
+        autoTimer = setInterval(() => {
+          setActive((prev) => {
+            if (prev >= words.length) {
+              stopAuto();
+              return prev;
+            }
+            return prev + 1;
+          });
+        }, 420);
+      }, 900);
+    };
     const update = () => {
       raf = 0;
       const el = ref.current;
@@ -49,11 +77,15 @@ export default function RedSweep({ text, className = "", once = false }) {
       // and the red word is the first word. At the bottom scrollY equals
       // the maximum scroll, so progress is 1 and every word is white.
       // Scrolling back up reverses it. If the page has no scroll at all,
-      // stay on the first word.
+      // there is no scroll to follow, so play the sweep once on its own.
       const maxScroll =
         document.documentElement.scrollHeight - window.innerHeight;
-      const progress =
-        maxScroll > 0 ? Math.min(1, Math.max(0, scrollY / maxScroll)) : 0;
+      if (maxScroll <= 0) {
+        startAuto();
+        return;
+      }
+      stopAuto();
+      const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
       setActive(Math.floor(progress * words.length));
     };
     const onScroll = () => {
@@ -66,6 +98,7 @@ export default function RedSweep({ text, className = "", once = false }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       if (raf) cancelAnimationFrame(raf);
+      stopAuto();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [once, text]);

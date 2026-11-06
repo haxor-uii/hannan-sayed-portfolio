@@ -220,7 +220,7 @@ export default function SiteChrome({ children }) {
               </a>
             ))}
           </div>
-          <p className="mt-5 text-xs text-[#8A8A8A]">No rights reserved. Free to use, just give credit to hannan.</p>
+          <p className="mt-5 text-xs text-[#8A8A8A]">No rights reserved. Use it freely, just leave a credit.</p>
         </div>
       </footer>
       ) : null}

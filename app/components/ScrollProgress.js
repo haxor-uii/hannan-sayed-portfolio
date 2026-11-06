@@ -10,7 +10,9 @@ export default function ScrollProgress() {
     const update = () => {
       raf = 0;
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      setPct(max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 100);
+      // No scroll on the page means nothing to fill yet, so the bar stays
+      // empty instead of showing full. The track itself stays visible.
+      setPct(max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
