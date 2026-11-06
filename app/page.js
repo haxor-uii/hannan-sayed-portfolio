@@ -22,7 +22,7 @@ const quickLinks = [
   { label: "About", href: "/about", desc: "Who I am and what I focus on." },
   { label: "Skills", href: "/skills", desc: "Core skills, vulns, and tools." },
   { label: "Certifications", href: "/certifications", desc: "Training and certificates." },
-  { label: "Writeups", href: "/writeups", desc: "Coming soon: lab notes and web vulns." },
+  { label: "Writeups", href: "/writeups", desc: "First walkthrough: TryHackMe Basic Pentesting." },
 ];
 
 export default function Home() {

@@ -16,7 +16,7 @@ const nav = [
   ["Skills", "/skills", "What I can test"],
   ["Experience", "/experience", "ShadowFox internship"],
   ["Certifications", "/certifications", "Training and certs"],
-  ["Writeups", "/writeups", "Coming soon"],
+  ["Writeups", "/writeups", "TryHackMe walkthrough"],
   ["Contact", "/contact", "Reach me"],
   ["Download CV", "/cv", "Printable CV"],
 ];
