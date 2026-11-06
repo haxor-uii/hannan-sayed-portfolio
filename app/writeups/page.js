@@ -3,7 +3,7 @@ import Reveal from "../components/Reveal";
 import GlowDivider from "../components/GlowDivider";
 
 export const metadata = {
-  description: "Writeups index for hannan. Future posts on web vulnerabilities and lab notes. Coming soon.",
+  description: "Writeups index for hannan. Three ShadowFox internship walkthroughs on web vulnerabilities and lab notes.",
   title: "Writeups | hannan.",
 };
 
@@ -23,7 +23,7 @@ function TagList({ items, label }) {
 export default function Writeups() {
   return (
     <div>
-      <PageHead eyebrowText="Writeups" title="Writeups" intro="Writeups from my ShadowFox internship and other labs, organised by topic. One post published so far." />
+      <PageHead eyebrowText="Writeups" title="Writeups" intro="Writeups from my ShadowFox internship and other labs, organised by topic. Three posts published." />
       <Reveal tag="section" className="py-10">
         <h2 className="text-xl text-[#F5F2ED] sm:text-2xl">Categories</h2>
         <TagList label="Writeup categories" items={["Web vulnerabilities", "Lab notes"]} />
@@ -43,9 +43,30 @@ export default function Writeups() {
             Gobuster to Hydra to SSH jan to John to SSH kay to sudo su to root. Lab notes, 5 min read.
           </span>
         </a>
-        <p className="mt-6 text-sm text-[#8A8A8A]">
-          Coming soon: Beginner testasp.vulnweb.com recon, and Intermediate VeraCrypt, PE analysis, and Metasploit.
-        </p>
+        <a
+          href="/writeups/testasp-vulnweb-recon"
+          className="mt-6 block rounded-xl border border-[#262626] p-4 transition-colors duration-200 hover:border-[#8A8A8A]"
+        >
+          <span className="flex flex-wrap items-start justify-between gap-3">
+            <span className="text-sm font-semibold text-[#F5F2ED]">testasp.vulnweb.com recon, one chain</span>
+            <span className="shrink-0 text-xs font-bold uppercase tracking-[0.28em] text-[#8A8A8A]">30 Apr 2026</span>
+          </span>
+          <span className="mt-2 block text-sm leading-relaxed text-[#8A8A8A]">
+            Nmap to Gobuster to Wireshark. One open port, one login page, one cleartext login. Web vulnerabilities, 4 min read.
+          </span>
+        </a>
+        <a
+          href="/writeups/veracrypt-pe-metasploit"
+          className="mt-6 block rounded-xl border border-[#262626] p-4 transition-colors duration-200 hover:border-[#8A8A8A]"
+        >
+          <span className="flex flex-wrap items-start justify-between gap-3">
+            <span className="text-sm font-semibold text-[#F5F2ED]">VeraCrypt, PE analysis, and Metasploit</span>
+            <span className="shrink-0 text-xs font-bold uppercase tracking-[0.28em] text-[#8A8A8A]">30 Apr 2026</span>
+          </span>
+          <span className="mt-2 block text-sm leading-relaxed text-[#8A8A8A]">
+            MD5 cracked to password123, a PE entry point, and a reverse shell on my own Windows VM. Lab notes, 5 min read.
+          </span>
+        </a>
       </Reveal>
     </div>
   );
