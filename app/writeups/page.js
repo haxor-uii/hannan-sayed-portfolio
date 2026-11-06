@@ -11,7 +11,7 @@ function TagList({ items, label }) {
   return (
     <ul aria-label={label} className="mt-5 flex flex-wrap gap-x-6 gap-y-3">
       {items.map((item) => (
-        <li key={item} className="flex items-center gap-2 text-base text-[#F5F2ED]">
+        <li key={item} className="flex items-center gap-2 text-sm text-[#F5F2ED]">
           <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#E11D2E]" />
           {item}
         </li>
@@ -25,18 +25,18 @@ export default function Writeups() {
     <div>
       <PageHead eyebrowText="Writeups" title="Writeups" intro="Writeups from my ShadowFox internship and other labs, organised by topic. One post published so far." />
       <Reveal tag="section" className="py-10">
-        <h2 className="text-2xl text-[#F5F2ED] sm:text-3xl">Categories</h2>
+        <h2 className="text-xl text-[#F5F2ED] sm:text-2xl">Categories</h2>
         <TagList label="Writeup categories" items={["Web vulnerabilities", "Lab notes"]} />
       </Reveal>
       <GlowDivider />
       <Reveal tag="section" className="py-10">
-        <h2 className="text-2xl text-[#F5F2ED] sm:text-3xl">Posts</h2>
+        <h2 className="text-xl text-[#F5F2ED] sm:text-2xl">Posts</h2>
         <a
           href="/writeups/tryhackme-basic-pentesting"
           className="mt-6 block rounded-xl border border-[#262626] p-4 transition-colors duration-200 hover:border-[#8A8A8A]"
         >
           <span className="flex flex-wrap items-start justify-between gap-3">
-            <span className="text-base font-semibold text-[#F5F2ED]">TryHackMe Basic Pentesting, full chain walkthrough</span>
+            <span className="text-sm font-semibold text-[#F5F2ED]">TryHackMe Basic Pentesting, full chain walkthrough</span>
             <span className="shrink-0 text-xs font-bold uppercase tracking-[0.28em] text-[#8A8A8A]">30 Apr 2026</span>
           </span>
           <span className="mt-2 block text-sm leading-relaxed text-[#8A8A8A]">

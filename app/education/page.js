@@ -11,10 +11,10 @@ export default function Education() {
     <div>
       <PageHead eyebrowText="Education" title="Education" />
       <Reveal tag="section" className="py-10">
-        <h2 className="text-2xl leading-snug text-[#F5F2ED] sm:text-3xl">
+        <h2 className="text-xl leading-snug text-[#F5F2ED] sm:text-2xl">
           St. Wilfred&apos;s College of ACS, University of Mumbai (NEP 2020)
         </h2>
-        <p className="mt-3 text-[#8A8A8A]">B.Sc. Computer Science, second year, academic year 2026-27.</p>
+        <p className="mt-3 text-sm text-[#8A8A8A]">B.Sc. Computer Science, second year, academic year 2026-27.</p>
       </Reveal>
     </div>
   );

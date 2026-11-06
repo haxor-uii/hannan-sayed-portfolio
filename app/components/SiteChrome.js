@@ -6,10 +6,13 @@ import GlowDivider from "./GlowDivider";
 
 // Menu, redesigned so it is not a copy of the reference screenshot.
 // The reference was a plain single-line icon-plus-label list. This one is
-// different on purpose: a header with the name and a close button, numbered
-// serif rows with a short description under each label, an arrow that only
-// appears on hover, and a small contact row at the bottom. It is still a
-// small dropdown, still dark, still no red panel, but it is not that list.
+// different on purpose: numbered serif rows with a short description under
+// each label, an arrow that only appears on hover, and a small contact row
+// at the bottom. It is still a small dropdown, still dark, still no red
+// panel, but it is not that list. The header block (name, MENU, Close) was
+// removed 2026-11-06 at the owner's request, the hamburger button in the
+// top bar closes the menu instead, and the Contact row was removed too,
+// because contact info already lives in the footer on the home page.
 const nav = [
   ["About", "/about", "Who I am"],
   ["Education", "/education", "College and degree"],
@@ -17,7 +20,6 @@ const nav = [
   ["Experience", "/experience", "ShadowFox internship"],
   ["Certifications", "/certifications", "Training and certs"],
   ["Writeups", "/writeups", "TryHackMe walkthrough"],
-  ["Contact", "/contact", "Reach me"],
   ["Download CV", "/cv", "Printable CV"],
 ];
 
@@ -116,7 +118,7 @@ export default function SiteChrome({ children }) {
     <div className="relative min-h-screen">
       <header className="topbar print:hidden sticky top-0 z-50 bg-[#0C0C0C]">
         <div className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <a href="/" className="flex min-h-[44px] items-center text-base lowercase tracking-wide text-[#F5F2ED]">
+          <a href="/" className="flex min-h-[44px] items-center text-sm lowercase tracking-wide text-[#F5F2ED]">
             hannan.
           </a>
           <button
@@ -139,20 +141,6 @@ export default function SiteChrome({ children }) {
             className={`menu-dropdown absolute right-4 top-[calc(100%+8px)] z-[90] w-[300px] max-w-[calc(100vw-2rem)] rounded-[20px] border border-[#2A2A2A] bg-[#141414] p-2 shadow-2xl print:hidden sm:right-6 ${menuOpen ? "open" : ""}`}
             aria-hidden={!menuOpen}
           >
-            <div className="flex items-center justify-between border-b border-[#262626] px-3 pb-3 pt-2">
-              <div>
-                <p className="font-serif text-lg leading-none text-[#F5F2ED]">hannan.</p>
-                <p className="mt-1 text-[11px] uppercase tracking-[0.28em] text-[#8A8A8A]">Menu</p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setMenuOpen(false)}
-                tabIndex={menuOpen ? 0 : -1}
-                className="flex min-h-[44px] min-w-[44px] items-center justify-center text-xs font-bold uppercase tracking-[0.2em] text-[#8A8A8A] hover:text-[#F5F2ED]"
-              >
-                Close
-              </button>
-            </div>
             <nav aria-label="Menu" className="flex flex-col pt-2">
               {nav.map(([label, href, desc], i) => {
                 const active = pathname === href;
@@ -170,7 +158,7 @@ export default function SiteChrome({ children }) {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="flex-1">
-                      <span className={`block font-serif text-base leading-tight ${active ? "font-semibold text-[#F5F2ED]" : "text-[#F5F2ED]"}`}>
+                      <span className={`block font-serif text-sm leading-tight ${active ? "font-semibold text-[#F5F2ED]" : "text-[#F5F2ED]"}`}>
                         {label}
                       </span>
                       <span className="block text-xs text-[#8A8A8A]">{desc}</span>
@@ -206,7 +194,7 @@ export default function SiteChrome({ children }) {
           <GlowDivider />
           <div className="mt-5 flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="font-serif text-2xl leading-none text-[#F5F2ED]">hannan.</p>
+              <p className="font-serif text-xl leading-none text-[#F5F2ED]">hannan.</p>
               <p className="mt-2 text-sm text-[#8A8A8A]">Ethical Hacker | Cybersecurity Aspirant · Mumbai, India</p>
             </div>
             <button
@@ -232,7 +220,7 @@ export default function SiteChrome({ children }) {
               </a>
             ))}
           </div>
-          <p className="mt-5 text-xs text-[#8A8A8A]">hannan. · Portfolio</p>
+          <p className="mt-5 text-xs text-[#8A8A8A]">No rights reserved. Free to use, just give credit to hannan.</p>
         </div>
       </footer>
       ) : null}

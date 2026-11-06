@@ -11,7 +11,7 @@ export default function Contact() {
     <div>
       <PageHead eyebrowText="Contact" title="Contact" intro="For professional enquiries, reach me through:" />
       <Reveal tag="section" className="py-10">
-        <ul className="space-y-4 text-[#F5F2ED]">
+        <ul className="space-y-4 text-sm text-[#F5F2ED]">
           <li>
             <a href="https://www.linkedin.com/in/hannan-sayed-18b751258" className="font-semibold hover:underline">
               LinkedIn

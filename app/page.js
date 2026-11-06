@@ -34,7 +34,7 @@ export default function Home() {
             as="h1"
             id="hero-heading"
             text="hannan."
-            className="text-[clamp(2.8rem,7vw,4.8rem)] leading-[0.95] text-[#F5F2ED]"
+            className="text-[clamp(2.4rem,6vw,4rem)] leading-[0.95] text-[#F5F2ED]"
           />
           <p
             className="entrance mt-6 text-sm font-bold uppercase tracking-[0.28em] text-[#8A8A8A]"
@@ -52,7 +52,7 @@ export default function Home() {
           <div className="entrance mt-12" style={{ animationDelay: "1050ms" }}>
             <RedSweep
               once
-              className="max-w-2xl text-xl leading-relaxed sm:text-2xl"
+              className="max-w-2xl text-lg leading-relaxed sm:text-xl"
               text="Breaking web apps on purpose, learning how they fail, and getting cleaner every time."
             />
           </div>
@@ -88,7 +88,7 @@ export default function Home() {
               href={link.href}
               className="rounded-xl border border-[#262626] p-4 transition-colors duration-200 hover:border-[#8A8A8A]"
             >
-              <span className="flex items-center justify-between text-base font-semibold text-[#F5F2ED]">
+              <span className="flex items-center justify-between text-sm font-semibold text-[#F5F2ED]">
                 {link.label}
                 <span aria-hidden="true">→</span>
               </span>
