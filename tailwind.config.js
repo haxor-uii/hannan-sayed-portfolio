@@ -6,6 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-jetbrains-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
+        serif: ["var(--font-jetbrains-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
+        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
+      },
       colors: {
         ink: "#0C0C0C",
         burgundy: "#410306",

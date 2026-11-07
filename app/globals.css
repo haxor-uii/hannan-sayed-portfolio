@@ -9,14 +9,28 @@ html {
 body {
   background: #0C0C0C;
   color: #F5F2ED;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   line-height: 1.7;
 }
 
 h1, h2, h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 400;
+  font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-weight: 700;
   letter-spacing: -0.01em;
+}
+
+/* Terminal prompt cursor: blinking block after the hero title line */
+.terminal-cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background: #E11D2E;
+  vertical-align: text-bottom;
+  animation: cursor-blink 1.1s steps(1) infinite;
+}
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 
 ::selection {
@@ -368,6 +382,10 @@ button:focus-visible {
   .star {
     animation: none;
     opacity: 0.35;
+  }
+  .terminal-cursor {
+    animation: none;
+    opacity: 1;
   }
 }
 

@@ -1,8 +1,16 @@
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Fireflies from "./components/Fireflies";
 import SiteChrome from "./components/SiteChrome";
 import CrosshairCursor from "./components/CrosshairCursor";
 import ScrollProgress from "./components/ScrollProgress";
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 export const metadata = {
   description: "Portfolio of hannan. Ethical Hacker | Cybersecurity Aspirant, B.Sc. Computer Science student focused on offensive cybersecurity and web application penetration testing.",
@@ -16,7 +24,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={jetbrainsMono.variable}>
       <body className="bg-[#0C0C0C] text-[#F5F2ED] antialiased">
         <a
           href="#main"

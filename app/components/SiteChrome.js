@@ -154,11 +154,11 @@ export default function SiteChrome({ children }) {
                     style={{ "--i": i }}
                     className={`menu-link group flex min-h-[56px] items-center gap-4 rounded-xl px-3 hover:bg-[#1E1E1E] ${active ? "bg-[#1E1E1E]" : ""}`}
                   >
-                    <span aria-hidden="true" className={`w-6 shrink-0 font-serif text-sm ${active ? "text-[#F5F2ED]" : "text-[#8A8A8A]"}`}>
+                    <span aria-hidden="true" className={`w-6 shrink-0 font-mono text-sm ${active ? "text-[#F5F2ED]" : "text-[#8A8A8A]"}`}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="flex-1">
-                      <span className={`block font-serif text-sm leading-tight ${active ? "font-semibold text-[#F5F2ED]" : "text-[#F5F2ED]"}`}>
+                      <span className={`block font-mono text-sm leading-tight ${active ? "font-semibold text-[#F5F2ED]" : "text-[#F5F2ED]"}`}>
                         {label}
                       </span>
                       <span className="block text-xs text-[#8A8A8A]">{desc}</span>
@@ -194,7 +194,7 @@ export default function SiteChrome({ children }) {
           <GlowDivider />
           <div className="mt-5 flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="font-serif text-xl leading-none text-[#F5F2ED]">hannan.</p>
+              <p className="font-mono text-xl leading-none text-[#F5F2ED]">hannan.</p>
               <p className="mt-2 text-sm text-[#8A8A8A]">Ethical Hacker | Cybersecurity Aspirant · Mumbai, India</p>
             </div>
             <button

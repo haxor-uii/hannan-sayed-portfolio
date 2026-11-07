@@ -37,10 +37,11 @@ export default function Home() {
             className="text-[clamp(2.4rem,6vw,4rem)] leading-[0.95] text-[#F5F2ED]"
           />
           <p
-            className="entrance mt-6 text-sm font-bold uppercase tracking-[0.28em] text-[#8A8A8A]"
+            className="entrance mt-6 font-mono text-xs text-[#8A8A8A] sm:text-sm"
             style={{ animationDelay: "350ms" }}
           >
-            Ethical Hacker | Cybersecurity Aspirant
+            <span aria-hidden="true" className="text-[#E11D2E]">$</span> ethical hacker | cybersecurity aspirant{" "}
+            <span aria-hidden="true" className="terminal-cursor" />
           </p>
           <div className="entrance mt-10" style={{ animationDelay: "700ms" }}>
             <span className="silver-rotor">
