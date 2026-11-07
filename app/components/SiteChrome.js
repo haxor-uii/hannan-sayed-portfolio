@@ -118,8 +118,9 @@ export default function SiteChrome({ children }) {
     <div className="relative min-h-screen">
       <header className="topbar print:hidden sticky top-0 z-50 bg-[#0C0C0C]">
         <div className="relative mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <a href="/" className="flex min-h-[44px] items-center text-sm lowercase tracking-wide text-[#F5F2ED]">
-            hannan.
+          <a href="/" aria-label="hannan. home" className="flex min-h-[44px] items-center font-mono text-lg font-bold leading-none">
+            <span aria-hidden="true" className="text-[#F5F2ED]">&gt;</span>
+            <span aria-hidden="true" className="text-[#E11D2E]">_</span>
           </a>
           <button
             ref={buttonRef}
