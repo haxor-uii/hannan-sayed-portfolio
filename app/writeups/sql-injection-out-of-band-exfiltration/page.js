@@ -17,8 +17,10 @@ function Section({ title, children }) {
 }
 
 function Code({ children }) {
+  // This payload is one very long line, so it wraps instead of scrolling
+  // sideways. The wrapping is visual only, copying it still gives one line.
   return (
-    <pre className="overflow-x-auto rounded-xl border border-[#262626] bg-[#111111] p-4 font-mono text-sm leading-relaxed text-[#F5F2ED]">
+    <pre className="overflow-x-auto whitespace-pre-wrap break-all rounded-xl border border-[#262626] bg-[#111111] p-4 font-mono text-sm leading-relaxed text-[#F5F2ED]">
       <code>{children}</code>
     </pre>
   );
