@@ -1,7 +1,7 @@
 import PageHead from "../components/PageHead";
 import RedSweep from "../components/RedSweep";
 import Reveal from "../components/Reveal";
-import Illustration from "../components/Illustration";
+import Timeline from "../components/Timeline";
 
 export const metadata = {
   description: "About hannan. B.Sc. Computer Science student focused on offensive cybersecurity and web application penetration testing.",
@@ -21,7 +21,7 @@ export default function About() {
           I like the practical side of security more than the theory. If something can be tested by hand, I would rather test it than read about it.
         </p>
         <div className="mt-12">
-          <Illustration label="Abstract illustration, photo to be added later" />
+          <Timeline />
         </div>
       </Reveal>
     </div>
