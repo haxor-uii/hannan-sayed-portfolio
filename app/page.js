@@ -22,7 +22,7 @@ const quickLinks = [
   { label: "About", href: "/about", desc: "Who I am and what I focus on." },
   { label: "Skills", href: "/skills", desc: "Core skills, vulns, and tools." },
   { label: "Certifications", href: "/certifications", desc: "Training and certificates." },
-  { label: "Writeups", href: "/writeups", desc: "Three ShadowFox walkthroughs." },
+  { label: "Writeups", href: "/writeups", desc: "Walkthroughs and vulnerability explainers." },
 ];
 
 export default function Home() {

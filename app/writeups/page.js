@@ -23,10 +23,10 @@ function TagList({ items, label }) {
 export default function Writeups() {
   return (
     <div>
-      <PageHead eyebrowText="Writeups" title="Writeups" intro="Writeups from my ShadowFox internship and other labs, organised by topic. Three posts published." />
+      <PageHead eyebrowText="Writeups" title="Writeups" intro="Writeups from my ShadowFox internship and other labs, organised by topic. Four posts published, including the first vulnerability explainer." />
       <Reveal tag="section" className="py-10">
         <h2 className="text-xl text-[#F5F2ED] sm:text-2xl">Categories</h2>
-        <TagList label="Writeup categories" items={["Web vulnerabilities", "Lab notes"]} />
+        <TagList label="Writeup categories" items={["Web vulnerabilities", "Lab notes", "Vulnerability explainers"]} />
       </Reveal>
       <GlowDivider />
       <Reveal tag="section" className="py-10">
@@ -65,6 +65,18 @@ export default function Writeups() {
           </span>
           <span className="mt-2 block text-sm leading-relaxed text-[#8A8A8A]">
             MD5 cracked to password123, a PE entry point, and a reverse shell on my own Windows VM. Lab notes, 5 min read.
+          </span>
+        </a>
+        <a
+          href="/writeups/sql-injection-out-of-band-exfiltration"
+          className="mt-6 block rounded-xl border border-[#262626] p-4 transition-colors duration-200 hover:border-[#8A8A8A]"
+        >
+          <span className="flex flex-wrap items-start justify-between gap-3">
+            <span className="text-sm font-semibold text-[#F5F2ED]">SQL injection, blind with out-of-band exfiltration, explained</span>
+            <span className="shrink-0 text-xs font-bold uppercase tracking-[0.28em] text-[#8A8A8A]">Practitioner</span>
+          </span>
+          <span className="mt-2 block text-sm leading-relaxed text-[#8A8A8A]">
+            The hardest Practitioner SQLi lab on PortSwigger Academy. A cookie, a silent query, and a password smuggled out over DNS. Vulnerability explainer, 5 min read.
           </span>
         </a>
       </Reveal>
