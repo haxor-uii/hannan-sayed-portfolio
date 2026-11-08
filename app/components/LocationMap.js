@@ -13,8 +13,8 @@ const CENTER_PX = 280;
 const CENTER_PY = 363;
 
 const tiles = [];
-for (let x = 2875; x <= 2878; x++) {
-  for (let y = 1824; y <= 1827; y++) {
+for (let x = 2875; x <= 2879; x++) {
+  for (let y = 1824; y <= 1828; y++) {
     tiles.push({ x, y });
   }
 }
@@ -30,8 +30,8 @@ export default function LocationMap() {
         aria-hidden="true"
         className="absolute"
         style={{
-          width: DISPLAY * 4,
-          height: DISPLAY * 4,
+          width: DISPLAY * 5,
+          height: DISPLAY * 5,
           left: `calc(50% - ${CENTER_PX}px)`,
           top: `calc(50% - ${CENTER_PY}px)`,
           filter: "brightness(1.2) contrast(1.25)",
