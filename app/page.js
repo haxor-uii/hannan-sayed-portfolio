@@ -1,6 +1,6 @@
 import WordReveal from "./components/WordReveal";
 import RedSweep from "./components/RedSweep";
-import Illustration from "./components/Illustration";
+import Constellation from "./components/Constellation";
 
 export const metadata = {
   description: "hannan. Ethical Hacker | Cybersecurity Aspirant.",
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
         </div>
         <div className="entrance lg:col-span-2" style={{ animationDelay: "900ms" }}>
-          <Illustration />
+          <Constellation />
         </div>
       </section>
 
