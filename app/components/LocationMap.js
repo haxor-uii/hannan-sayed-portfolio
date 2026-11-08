@@ -1,15 +1,20 @@
 // A real dark map centred on Mumbai, India, built from map tiles.
 // The pin marks the city centre only, the same city-level location the
 // site already states in the footer. Nothing more precise is shown.
-const ZOOM = 11;
+// Tiles are zoom 12 shown at half size, so the map stays sharp on
+// high-density phone screens, with a contrast lift so it reads less dull.
+const ZOOM = 12;
 const TILE = 256;
-// Mumbai (19.076 N, 72.878 E) sits at pixel (154, 102) inside tile 1438/913.
-const CENTER_PX = 154 + TILE;
-const CENTER_PY = 102 + TILE;
+const DISPLAY = 128;
+// Mumbai (19.076 N, 72.878 E) sits at pixel (47.7, 213.2) inside tile 2877/1826.
+// In the 4x4 grid below that is (559.7, 725.2) map pixels, shown at half
+// size, so the centre offset is (279.9, 362.6).
+const CENTER_PX = 280;
+const CENTER_PY = 363;
 
 const tiles = [];
-for (let x = 1437; x <= 1440; x++) {
-  for (let y = 912; y <= 914; y++) {
+for (let x = 2875; x <= 2878; x++) {
+  for (let y = 1824; y <= 1827; y++) {
     tiles.push({ x, y });
   }
 }
@@ -25,10 +30,11 @@ export default function LocationMap() {
         aria-hidden="true"
         className="absolute"
         style={{
-          width: TILE * 4,
-          height: TILE * 3,
+          width: DISPLAY * 4,
+          height: DISPLAY * 4,
           left: `calc(50% - ${CENTER_PX}px)`,
           top: `calc(50% - ${CENTER_PY}px)`,
+          filter: "brightness(1.2) contrast(1.25)",
         }}
       >
         {tiles.map(({ x, y }) => (
@@ -41,7 +47,12 @@ export default function LocationMap() {
             loading="lazy"
             draggable={false}
             className="absolute"
-            style={{ left: (x - 1437) * TILE, top: (y - 912) * TILE }}
+            style={{
+              left: (x - 2875) * DISPLAY,
+              top: (y - 1824) * DISPLAY,
+              width: DISPLAY,
+              height: DISPLAY,
+            }}
           />
         ))}
       </div>
