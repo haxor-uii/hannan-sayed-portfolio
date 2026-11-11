@@ -51,7 +51,7 @@ export default function Timeline() {
             <p className={`text-xs font-bold ${item.current ? "text-[#F5F2ED]" : "text-[#E11D2E]"}`}>
               {item.date}
             </p>
-            <p className="mt-2 text-sm text-[#F5F2ED]">{item.title}</p>
+            <p className="mt-2 text-xs text-[#F5F2ED]">{item.title}</p>
             <p className="mt-1 text-xs text-[#8A8A8A]">{item.sub}</p>
           </li>
         ))}

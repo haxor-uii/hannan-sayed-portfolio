@@ -11,8 +11,8 @@ function Step({ number, title, children }) {
   return (
     <Reveal tag="section" className="py-8">
       <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#8A8A8A]">Step {number}</p>
-      <h2 className="mt-3 text-xl text-[#F5F2ED] sm:text-2xl">{title}</h2>
-      <div className="mt-4 space-y-4 text-sm leading-relaxed text-[#F5F2ED]">{children}</div>
+      <h2 className="mt-3 text-lg text-[#F5F2ED] sm:text-xl">{title}</h2>
+      <div className="mt-4 space-y-4 text-xs leading-relaxed text-[#F5F2ED]">{children}</div>
     </Reveal>
   );
 }
@@ -29,7 +29,7 @@ function Shot({ src, alt, caption }) {
   return (
     <figure className="mt-6">
       <img src={src} alt={alt} className="w-full rounded-xl border border-[#262626]" loading="lazy" />
-      <figcaption className="mt-3 text-sm text-[#8A8A8A]">{caption}</figcaption>
+      <figcaption className="mt-3 text-xs text-[#8A8A8A]">{caption}</figcaption>
     </figure>
   );
 }
@@ -132,7 +132,7 @@ exploit`}</Code>
 
       <GlowDivider />
 
-      <p className="text-sm text-[#8A8A8A]">
+      <p className="text-xs text-[#8A8A8A]">
         Done during the ShadowFox Cyber Security Virtual Internship, 1 to 30 April 2026. Cert ID SFO4VIP284.
       </p>
       <p>

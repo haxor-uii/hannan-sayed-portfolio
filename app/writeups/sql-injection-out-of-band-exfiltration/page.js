@@ -10,8 +10,8 @@ export const metadata = {
 function Section({ title, children }) {
   return (
     <Reveal tag="section" className="py-8">
-      <h2 className="mt-3 text-xl text-[#F5F2ED] sm:text-2xl">{title}</h2>
-      <div className="mt-4 space-y-4 text-sm leading-relaxed text-[#F5F2ED]">{children}</div>
+      <h2 className="mt-3 text-lg text-[#F5F2ED] sm:text-xl">{title}</h2>
+      <div className="mt-4 space-y-4 text-xs leading-relaxed text-[#F5F2ED]">{children}</div>
     </Reveal>
   );
 }
@@ -120,7 +120,7 @@ export default function SqlInjectionOutOfBand() {
 
       <GlowDivider />
 
-      <p className="text-sm text-[#8A8A8A]">
+      <p className="text-xs text-[#8A8A8A]">
         Lab: Blind SQL injection with out-of-band data exfiltration, PortSwigger Web Security Academy, Practitioner level. Run it yourself on the Academy, it is free.
       </p>
       <p>

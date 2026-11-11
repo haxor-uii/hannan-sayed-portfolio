@@ -44,7 +44,14 @@ export default function WordReveal({ text, className = "", id, as = "h2" }) {
     >
       {words.map((word, i) => (
         <span key={i} aria-hidden="true" className="word" style={{ transitionDelay: `${Math.min(i * 45, 450)}ms` }}>
-          {word}
+          {word.endsWith(".") ? (
+            <>
+              {word.slice(0, -1)}
+              <span style={{ marginLeft: "-0.14em" }}>.</span>
+            </>
+          ) : (
+            word
+          )}
           {i < words.length - 1 ? "\u00A0" : ""}
         </span>
       ))}

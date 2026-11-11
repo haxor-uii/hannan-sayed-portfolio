@@ -22,10 +22,10 @@ export default function Certifications() {
           {certs.map((cert) => (
             <div key={cert.name}>
               <div className="flex items-start justify-between gap-3">
-                <h2 className="text-xl leading-snug text-[#F5F2ED]">{cert.name}</h2>
+                <h2 className="text-lg leading-snug text-[#F5F2ED]">{cert.name}</h2>
                 <span className="shrink-0 text-xs font-bold uppercase tracking-[0.28em] text-[#8A8A8A]">{cert.status}</span>
               </div>
-              <p className="mt-3 text-sm text-[#8A8A8A]">{cert.detail}</p>
+              <p className="mt-3 text-xs text-[#8A8A8A]">{cert.detail}</p>
             </div>
           ))}
         </div>
